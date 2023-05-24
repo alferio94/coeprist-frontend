@@ -11,6 +11,7 @@ import NuevaVisita from "./pages/NuevaVisita"
 import { AuthProvider } from "./context/AuthProvider"
 import { AdminProvider } from "./context/AdminProvider"
 import Visitas from "./pages/Visitas"
+import MunicipiosReport from "./pages/MunicipiosReport"
 function App()
 {
 
@@ -21,14 +22,15 @@ function App()
           <Routes>
             <Route path="/" element={<AuthLayout />}>
               <Route index element={<Login />} />
-              <Route path="registrar" element={<Registrar />} />
               <Route path="olvide-password" element={<OlvidePassword />} />
               <Route path="nuevo-password/:token" element={<NuevoPassword />} />
               <Route path="confirmar/:token" element={<ConfirmarCuenta />} />
             </Route>
             <Route path="/dashboard" element={<RutaProtegida />}>
               <Route index element={<Dashboard />} />
+              <Route path="reporte" element={<MunicipiosReport />} />
               <Route path="nueva-visita" element={<NuevaVisita />} />
+              <Route path="registrar" element={<Registrar />} />
             </Route>
             <Route path="/visitas" element={<RutaProtegida />}>
               <Route index element={<Visitas />} />

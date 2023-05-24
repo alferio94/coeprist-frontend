@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useState } from "react"
 import useAuth from "../hooks/useAuth";
 const Navbar = () =>
@@ -12,10 +12,10 @@ const Navbar = () =>
         to: 'visitas',
         name: 'Visitas'
     }, {
-        to: 'reporting',
+        to: 'reporte',
         name: 'Reportes'
     }, {
-        to: 'crear-usuario',
+        to: 'registrar',
         name: 'Nuevo usuario'
     }]
     const visitor = [{
@@ -38,25 +38,39 @@ const Navbar = () =>
                     {auth.admin && admin.map(link =>
                     {
                         return <li className="className='md:ml-0 text-xl md:my-0 my-10'" key={link.name}>
-                            <Link
+                            <NavLink
                                 to={link.to}
                                 className="font-bold uppercase"
                                 onClick={() => setOpen(false)}
+                                style={({ isActive }) =>
+                                {
+                                    return {
+                                        color: isActive && "#9d174d"
+                                    }
+                                }}
+                                end
                             >
                                 {link.name}
-                            </Link>
+                            </NavLink>
                         </li>
                     })}
                     {!auth.admin && visitor.map(link =>
                     {
                         return <li className="className='md:ml-0 text-xl md:my-0 my-10'" key={link.name}>
-                            <Link
+                            <NavLink
                                 to={link.to}
                                 className="font-bold uppercase"
                                 onClick={() => setOpen(false)}
+                                style={({ isActive }) =>
+                                {
+                                    return {
+                                        color: isActive && "#9d174d"
+                                    }
+                                }}
+                                end
                             >
                                 {link.name}
-                            </Link>
+                            </NavLink>
                         </li>
                     })}
 

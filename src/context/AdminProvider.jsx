@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState, createContext } from "react";
 import clienteAxios from "../config/clienteAxios";
+import { useNavigate } from "react-router-dom";
 
 const AdminContext = createContext();
 const AdminProvider = ({ children }) =>
 {
     const [loading, setLoading] = useState(true)
     const [municipiosData, setMunicipiosData] = useState([]);
+    const navigate = useNavigate();
     const getMunicipiosData = async () =>
     {
         const token = localStorage.getItem('token');
@@ -31,12 +33,21 @@ const AdminProvider = ({ children }) =>
             console.log(error.response.data)
         }
     }
+    const checkAdmin = (auth) =>
+    {
+        if (!auth.admin)
+        {
+            navigate("/visitas")
+        }
+        return
+    }
     return (
         <AdminContext.Provider
             value={{
                 getMunicipiosData,
                 municipiosData,
-                loading
+                loading,
+                checkAdmin
             }}
         >
             {children}

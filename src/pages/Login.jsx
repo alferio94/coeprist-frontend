@@ -73,12 +73,6 @@ const Login = () =>
             </form>
             <nav className="md:flex md:justify-between">
                 <Link
-                    to="registrar"
-                    className="block text-center my-5 text-slate-500 uppercase text-sm"
-                >
-                    Nuevo usuario
-                </Link>
-                <Link
                     to="olvide-password"
                     className="block text-center my-5 text-slate-500 uppercase text-sm"
                 >
