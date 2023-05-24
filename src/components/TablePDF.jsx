@@ -17,7 +17,7 @@ const TablePDF = ({ municipios }) =>
         // Agrega los datos de cada fila al array de datos
         municipios.forEach((muni) =>
         {
-            const row = [muni.municipio, muni.Hospital, muni.Bar, muni.Clinica, muni.Restaurante, muni.Farmacia];
+            const row = [muni.municipio, muni.giros[0].visitas, muni.giros[1].visitas, muni.giros[2].visitas, muni.giros[4].visitas, muni.giros[3].visitas];
             data.push(row);
         });
 

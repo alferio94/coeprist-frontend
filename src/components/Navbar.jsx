@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom"
 import { useState } from "react"
 import useAuth from "../hooks/useAuth";
+import useUser from "../hooks/useUser"
 const Navbar = () =>
 {
     const [open, setOpen] = useState(false);
     const { auth } = useAuth();
+    const { cerrarSesion } = useUser();
     const admin = [{
         to: '/dashboard',
         name: 'Dashboard'
@@ -77,6 +79,7 @@ const Navbar = () =>
                     <button
                         type="button"
                         className="text-sm bg-pink-800 p-3 text-white uppercase font-bold rounded-md hover:cursor-pointer hover:bg-pink-900 transition-colors md:mt-0 mt-3"
+                        onClick={cerrarSesion}
                     >Cerrar Sesion</button>
                 </ul>
             </div>

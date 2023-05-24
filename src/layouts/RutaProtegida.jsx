@@ -1,15 +1,12 @@
-import { Outlet, Navigate, useLocation } from "react-router-dom"
+import { Outlet, Navigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import Navbar from "../components/Navbar";
-import useAdmin from "../hooks/useAdmin";
 const RutaProtegida = () =>
 {
     const { auth, loading } = useAuth();
-    const location = useLocation();
-    const { checkAdmin } = useAdmin();
 
     if (loading) return 'Cargando'
-    checkAdmin(auth);
+
 
     return (
         <>
@@ -24,7 +21,7 @@ const RutaProtegida = () =>
                         </div>
                     </div>
                 )
-                : <Navigate to="/" replace state={{ from: location }} />}
+                : <Navigate to="/" replace />}
         </>
     )
 }
